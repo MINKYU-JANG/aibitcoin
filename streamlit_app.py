@@ -46,15 +46,13 @@ def main():
     st.plotly_chart(fig)
 
     # 전체 자산 계산
-    df['total_assets'] = df['btc_balance'] * \
-    df['btc_krw_price'] + df['krw_balance']
+    df['total_assets'] = df['btc_balance'] * df['btc_krw_price'] + df['krw_balance']
         
     # 전체 자산 변화 그래프
     st.header('Total Assets Over Time')
-    fig = px.line(df, x='timestamp', y='total_assets',
-    title='Total Assets (KRW)')
-    
+    fig = px.line(df, x='timestamp', y='total_assets',title='Total Assets (KRW)')
     st.plotly_chart(fig)
+    
     # BTC 잔액 변화
     st.header('BTC Balance Over Time')
     fig = px.line(df, x='timestamp', y='btc_balance', title='BTC Balance')
